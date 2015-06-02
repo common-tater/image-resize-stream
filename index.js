@@ -43,7 +43,7 @@ function createStream(width, height, options) {
 
     image.onerror = onerror
     image.onload = onload
-    image.src = concat.slice()
+    image.src = 'data:image/*;base64,' + window.btoa(String.fromCharCode.apply(null, concat.slice()))
 
     function onerror(err) {
       stream.emit('error', err)
@@ -59,10 +59,9 @@ function createStream(width, height, options) {
         , smaller:  !!options.smaller
       })
 
-      var canvas = new Canvas(
-          dims.canvasDimensions[0]
-        , dims.canvasDimensions[1]
-      )
+      var canvas = document.createElement('canvas')
+      canvas.width = dims.canvasDimensions[0]
+      canvas.height = dims.canvasDimensions[1]
 
       var ctx = canvas.getContext('2d')
       ctx.imageSmoothingEnabled = true
@@ -73,17 +72,9 @@ function createStream(width, height, options) {
         , dims.drawDimensions[1]
       )
 
-      ;(options.format !== 'jpg'
-        ? canvas.pngStream()
-        : canvas.jpegStream({
-            quality: options.quality
-          , progressive: options.progressive
-        })
-      ).on('data', function(data) {
-        stream.push(data)
-      }).once('end', function() {
-        stream.push(null)
-      })
+      var dataUrl = canvas.toDataURL('image/jpeg')
+      stream.push(dataUrl)
+      stream.push(null)
     }
   }
 }

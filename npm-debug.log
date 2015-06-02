@@ -1,0 +1,44 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\iojs\\node.exe',
+1 verbose cli   'C:\\Program Files\\iojs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'test' ]
+2 info using npm@2.7.6
+3 info using node@v1.7.1
+4 verbose run-script [ 'pretest', 'test', 'posttest' ]
+5 info pretest image-resize-stream@0.0.0
+6 info test image-resize-stream@0.0.0
+7 verbose unsafe-perm in lifecycle true
+8 info image-resize-stream@0.0.0 Failed to exec test script
+9 verbose stack Error: image-resize-stream@0.0.0 test: `mkdir -p test_output && node test && echo check ./test_output/ for updated images'
+9 verbose stack '`
+9 verbose stack Exit status 1
+9 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\iojs\node_modules\npm\lib\utils\lifecycle.js:213:16)
+9 verbose stack     at emitTwo (events.js:87:13)
+9 verbose stack     at EventEmitter.emit (events.js:169:7)
+9 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\iojs\node_modules\npm\lib\utils\spawn.js:14:12)
+9 verbose stack     at emitTwo (events.js:87:13)
+9 verbose stack     at ChildProcess.emit (events.js:169:7)
+9 verbose stack     at maybeClose (child_process.js:953:16)
+9 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1022:5)
+10 verbose pkgid image-resize-stream@0.0.0
+11 verbose cwd F:\tater\image-resize-stream
+12 error Windows_NT 6.3.9600
+13 error argv "C:\\Program Files\\iojs\\node.exe" "C:\\Program Files\\iojs\\node_modules\\npm\\bin\\npm-cli.js" "run" "test"
+14 error node v1.7.1
+15 error npm  v2.7.6
+16 error code ELIFECYCLE
+17 error image-resize-stream@0.0.0 test: `mkdir -p test_output && node test && echo check ./test_output/ for updated images'
+17 error '`
+17 error Exit status 1
+18 error Failed at the image-resize-stream@0.0.0 test script 'mkdir -p test_output && node test && echo check ./test_output/ for updated images'
+18 error ''.
+18 error This is most likely a problem with the image-resize-stream package,
+18 error not with npm itself.
+18 error Tell the author that this fails on your system:
+18 error     mkdir -p test_output && node test && echo check ./test_output/ for updated images'
+18 error '
+18 error You can get their info via:
+18 error     npm owner ls image-resize-stream
+18 error There is likely additional logging output above.
+19 verbose exit [ 1, true ]

@@ -1,6 +1,5 @@
 var resize = require('resize-logic')
 var through2 = require('through2')
-var Canvas = require('canvas')
 var bl = require('bl')
 
 module.exports = createStream
@@ -38,7 +37,9 @@ function createStream(width, height, options) {
   }
 
   function flush() {
-    var image = new Canvas.Image
+    var canvas = document.createElement('canvas')
+    var image = document.createElement('img')
+    canvas.appendChild(image)
 
     image.onerror = onerror
     image.onload = onload

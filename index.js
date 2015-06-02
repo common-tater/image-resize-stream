@@ -37,13 +37,11 @@ function createStream(width, height, options) {
   }
 
   function flush() {
-    var canvas = document.createElement('canvas')
     var image = document.createElement('img')
-    canvas.appendChild(image)
 
     image.onerror = onerror
     image.onload = onload
-    image.src = 'data:image/*;base64,' + window.btoa(String.fromCharCode.apply(null, concat.slice()))
+    image.src = 'data:image/*;base64,' + concat.slice().toString('base64')
 
     function onerror(err) {
       stream.emit('error', err)
@@ -72,8 +70,9 @@ function createStream(width, height, options) {
         , dims.drawDimensions[1]
       )
 
-      var dataUrl = canvas.toDataURL('image/jpeg')
-      stream.push(dataUrl)
+      var base64data = canvas.toDataURL()
+      base64data = base64data.split(',')[1]
+      stream.push(new Buffer(base64data, 'base64'))
       stream.push(null)
     }
   }
